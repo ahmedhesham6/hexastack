@@ -1,6 +1,9 @@
-<img src="./logo.png" alt="Hexastack Logo" width="128" height="128">
+<div align="center">
+  <img src="./logo.png" alt="Hexastack Logo" width="128" height="128">
 
 # Hexastack
+
+</div>
 
 A modern, type-safe, and scalable monorepo template built with the best tools in the TypeScript and full-stack ecosystem.
 
