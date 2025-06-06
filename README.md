@@ -20,7 +20,7 @@ A modern, type-safe, and scalable monorepo template built with the best tools in
 | **PostgresDB**    | Reliable, open-source SQL database.                                                          | [PostgreSQL](https://www.postgresql.org/)                                             |
 | **Tailwind CSS**  | Utility-first CSS framework for rapid UI development.                                        | [Tailwind CSS](https://tailwindcss.com/)                                              |
 | **shadcn/ui**     | Beautiful, accessible React components.                                                      | [shadcn/ui](https://ui.shadcn.com/)                                                   |
-| **Better Auth**   | Modern authentication patterns and utilities.                                                | [Better Auth](https://github.com/nextauthjs/next-auth) *(or your custom solution)*    |
+| **Better Auth**   | Modern authentication patterns and utilities.                                                | [Better Auth](https://www.better-auth.com)   |
 | **Biome**         | All-in-one toolchain for formatting, linting, and more.                                      | [Biome](https://biomejs.dev/)                                                         |
 
 ---
