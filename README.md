@@ -1,4 +1,4 @@
-# ![Hexastack Logo](./logo.png)
+# <img src="./logo.png" alt="Hexastack Logo" width="32" height="32">
 
 # Hexastack Monorepo
 
@@ -121,6 +121,3 @@ A modern, type-safe, and scalable monorepo template built with the best tools in
 MIT
 
 ---
-
-**Logo:**  
-![Hexastack Logo](./logo.png)
