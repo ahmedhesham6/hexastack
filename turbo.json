@@ -1,0 +1,37 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "ui": "stream",
+  "envMode": "loose",
+  "tasks": {
+    "db:migrate": {
+      "dependsOn": ["db:generate"],
+      "passThroughEnv": ["DATABASE_URL"],
+      "inputs": ["drizzle/**"]
+    },
+    "db:generate": {
+      "passThroughEnv": ["DATABASE_URL"],
+      "inputs": ["schema/**", "drizzle.config.ts"],
+      "outputs": ["drizzle/**"]
+    },
+    "db:studio": {
+      "cache": false,
+      "persistent": true
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "check-types": {
+      "dependsOn": ["^check-types"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}

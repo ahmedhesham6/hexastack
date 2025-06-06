@@ -1,0 +1,10 @@
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports.biome": "explicit"
+  },
+  "editor.defaultFormatter": "biomejs.biome",
+  "tailwindCSS.experimental.configFile": "packages/ui/styles/globals.css",
+  "cSpell.words": ["hexastack"]
+}

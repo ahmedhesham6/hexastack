@@ -1,0 +1,3 @@
+{
+  "extends": "@hexastack/typescript-config/base.json"
+}
