@@ -22,7 +22,6 @@
   "devDependencies": {
     "@hexastack/typescript-config": "workspace:*",
     "drizzle-kit": "^0.31.1",
-    "tsx": "^4.19.4",
     "typescript": "^5.8.3"
   }
 }
