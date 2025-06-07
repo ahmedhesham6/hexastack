@@ -22,6 +22,7 @@ A modern, type-safe, and scalable monorepo template built with the best tools in
 | **shadcn/ui**     | Beautiful, accessible React components.                                                      | [shadcn/ui](https://ui.shadcn.com/)                                                   |
 | **Better Auth**   | Modern authentication patterns and utilities.                                                | [Better Auth](https://www.better-auth.com)   |
 | **Biome**         | All-in-one toolchain for formatting, linting, and more.                                      | [Biome](https://biomejs.dev/)                                                         |
+| **Fumadocs**      | Documentation framework for Next.js, powering the docs app.  | [Fumadocs](https://fumadocs.dev/) |
 
 ---
 
@@ -30,7 +31,8 @@ A modern, type-safe, and scalable monorepo template built with the best tools in
 ```
 .
 ├── apps/
-│   └── web/                # Next.js application
+│   ├── web/                # Next.js application
+│   └── docs/               # Fumadocs-powered documentation site
 ├── packages/
 │   ├── ui/                 # shadcn/ui components
 │   ├── db/                 # Drizzle ORM & Postgres setup
@@ -80,6 +82,18 @@ A modern, type-safe, and scalable monorepo template built with the best tools in
 
 - **Database migrations:**
   See `packages/db/README.md` for Drizzle ORM migration commands.
+
+- **Documentation (Fumadocs):**
+
+  The documentation site is powered by [Fumadocs](https://fumadocs.dev/).
+
+  To run the docs locally:
+
+  ```bash
+  pnpm --filter docs dev
+  ```
+
+  See `apps/docs/README.md` for more details and customization options.
 
 ---
 
