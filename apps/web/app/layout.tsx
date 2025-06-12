@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 
 import "@hexastack/ui/globals.css";
+import "@/lib/orpc.server";
+
 import { Providers } from "@/components/providers";
 
 const fontSans = Geist({

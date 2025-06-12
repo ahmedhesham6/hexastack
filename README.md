@@ -23,6 +23,7 @@ A modern, type-safe, and scalable monorepo template built with the best tools in
 | **Better Auth**   | Modern authentication patterns and utilities.                                                | [Better Auth](https://www.better-auth.com)   |
 | **Biome**         | All-in-one toolchain for formatting, linting, and more.                                      | [Biome](https://biomejs.dev/)                                                         |
 | **Fumadocs**      | Documentation framework for Next.js, powering the docs app.  | [Fumadocs](https://fumadocs.dev/) |
+| **oRPC**           | End-to-end type-safe APIs, OpenAPI support, and contract-first development.                        | [oRPC](https://orpc.unnoq.com/)                                                      |
 
 ---
 
@@ -35,6 +36,7 @@ A modern, type-safe, and scalable monorepo template built with the best tools in
 │   └── docs/               # Fumadocs-powered documentation site
 ├── packages/
 │   ├── ui/                 # shadcn/ui components
+│   ├── api/                # oRPC API definitions and procedures
 │   ├── db/                 # Drizzle ORM & Postgres setup
 │   ├── auth/               # Authentication logic
 │   └── typescript-config/  # Shared TypeScript configs

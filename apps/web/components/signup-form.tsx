@@ -12,39 +12,55 @@ import { Input } from "@hexastack/ui/components/input";
 import { Label } from "@hexastack/ui/components/label";
 import { cn } from "@hexastack/ui/lib/utils";
 import { useForm } from "@tanstack/react-form";
+import { redirect } from "next/navigation";
 import { z } from "zod/v4";
-import { signIn } from "@/lib/auth";
+import { signUp } from "@/lib/auth";
 
-export function LoginForm({
+export function SignupForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
   const form = useForm({
     defaultValues: {
+      firstName: "",
+      lastName: "",
       email: "",
       password: "",
+      confirmPassword: "",
     },
     validators: {
       onChange: z.object({
         email: z.email(),
         password: z.string().min(8),
+        confirmPassword: z.string().min(8),
+        firstName: z.string().min(1),
+        lastName: z.string().min(1),
       }),
     },
     onSubmit: async ({ value }) => {
-      await signIn.email({
-        email: value.email,
-        password: value.password,
-        callbackURL: "/",
-      });
+      await signUp.email(
+        {
+          email: value.email,
+          password: value.password,
+          name: `${value.firstName} ${value.lastName}`,
+          image: "",
+          callbackURL: "/",
+        },
+        {
+          onSuccess: () => {
+            redirect("/");
+          },
+        }
+      );
     },
   });
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
         <CardHeader className="text-center">
-          <CardTitle className="text-xl">Welcome back</CardTitle>
+          <CardTitle className="text-xl">Create your account</CardTitle>
           <CardDescription>
-            Login with your Apple or Google account
+            Sign up with your Apple or Google account
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -64,7 +80,7 @@ export function LoginForm({
                       fill="currentColor"
                     />
                   </svg>
-                  Login with Apple
+                  Sign up with Apple
                 </Button>
                 <Button variant="outline" className="w-full">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -73,7 +89,7 @@ export function LoginForm({
                       fill="currentColor"
                     />
                   </svg>
-                  Login with Google
+                  Sign up with Google
                 </Button>
               </div>
               <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-border after:border-t">
@@ -82,14 +98,12 @@ export function LoginForm({
                 </span>
               </div>
               <div className="grid gap-6">
-                <div className="grid gap-3">
-                  <form.Field
-                    name="email"
-                    // biome-ignore lint/correctness/noChildrenProp: <explanation>
-                    children={(field) => {
-                      return (
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="grid gap-3">
+                    <form.Field name="firstName">
+                      {(field) => (
                         <>
-                          <Label htmlFor={field.name}>Email</Label>
+                          <Label htmlFor={field.name}>First Name</Label>
                           <Input
                             id={field.name}
                             name={field.name}
@@ -98,56 +112,94 @@ export function LoginForm({
                             onChange={(e) => field.handleChange(e.target.value)}
                           />
                         </>
-                      );
-                    }}
-                  />
+                      )}
+                    </form.Field>
+                  </div>
+                  <div className="grid gap-3">
+                    <form.Field name="lastName">
+                      {(field) => (
+                        <>
+                          <Label htmlFor={field.name}>Last Name</Label>
+                          <Input
+                            id={field.name}
+                            name={field.name}
+                            value={field.state.value}
+                            onBlur={field.handleBlur}
+                            onChange={(e) => field.handleChange(e.target.value)}
+                          />
+                        </>
+                      )}
+                    </form.Field>
+                  </div>
                 </div>
                 <div className="grid gap-3">
-                  <form.Field
-                    name="password"
-                    // biome-ignore lint/correctness/noChildrenProp: <explanation>
-                    children={(field) => {
-                      return (
-                        <>
-                          <div className="flex items-center">
-                            <Label htmlFor="password">Password</Label>
-                            <a
-                              href="#"
-                              className="ml-auto text-sm underline-offset-4 hover:underline"
-                            >
-                              Forgot your password?
-                            </a>
-                          </div>
-                          <Input
-                            id={field.name}
-                            name={field.name}
-                            value={field.state.value}
-                            onBlur={field.handleBlur}
-                            onChange={(e) => field.handleChange(e.target.value)}
-                          />
-                        </>
-                      );
-                    }}
-                  />
+                  <form.Field name="email">
+                    {(field) => (
+                      <>
+                        <Label htmlFor={field.name}>Email</Label>
+                        <Input
+                          id={field.name}
+                          name={field.name}
+                          value={field.state.value}
+                          onBlur={field.handleBlur}
+                          onChange={(e) => field.handleChange(e.target.value)}
+                        />
+                      </>
+                    )}
+                  </form.Field>
+                </div>
+                <div className="grid gap-3">
+                  <form.Field name="password">
+                    {(field) => (
+                      <>
+                        <Label htmlFor={field.name}>Password</Label>
+                        <Input
+                          id={field.name}
+                          name={field.name}
+                          type="password"
+                          value={field.state.value}
+                          onBlur={field.handleBlur}
+                          onChange={(e) => field.handleChange(e.target.value)}
+                        />
+                      </>
+                    )}
+                  </form.Field>
+                </div>
+                <div className="grid gap-3">
+                  <form.Field name="confirmPassword">
+                    {(field) => (
+                      <>
+                        <Label htmlFor={field.name}>Confirm Password</Label>
+                        <Input
+                          id={field.name}
+                          name={field.name}
+                          type="password"
+                          value={field.state.value}
+                          onBlur={field.handleBlur}
+                          onChange={(e) => field.handleChange(e.target.value)}
+                        />
+                      </>
+                    )}
+                  </form.Field>
                 </div>
                 <form.Subscribe
                   selector={(state) => [state.canSubmit, state.isValid]}
-                  // biome-ignore lint/correctness/noChildrenProp: <explanation>
-                  children={([canSubmit]) => (
+                >
+                  {([canSubmit]) => (
                     <Button
                       type="submit"
                       className="w-full"
                       disabled={!canSubmit}
                     >
-                      Login
+                      Sign up
                     </Button>
                   )}
-                />
+                </form.Subscribe>
               </div>
               <div className="text-center text-sm">
-                Don&apos;t have an account?{" "}
-                <a href="/signup" className="underline underline-offset-4">
-                  Sign up
+                Already have an account?{" "}
+                <a href="/login" className="underline underline-offset-4">
+                  Login
                 </a>
               </div>
             </div>

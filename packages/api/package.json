@@ -1,0 +1,15 @@
+{
+  "name": "@hexastack/api",
+  "version": "0.0.0",
+  "scripts": {},
+  "dependencies": {
+    "@hexastack/db": "workspace:*",
+    "@orpc/server": "^1.5.0",
+    "zod": "^3.25.56"
+  },
+  "devDependencies": {
+    "@hexastack/typescript-config": "workspace:*",
+    "@types/node": "^20",
+    "typescript": "^5.8.3"
+  }
+}

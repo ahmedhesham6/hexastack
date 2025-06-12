@@ -4,7 +4,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@hexastack/ui/*": ["../../packages/ui/src/*"]
+      "@hexastack/ui/*": ["../../packages/ui/src/*"],
+      "@hexastack/api/*": ["../../packages/api/src/*"]
     },
     "plugins": [
       {
